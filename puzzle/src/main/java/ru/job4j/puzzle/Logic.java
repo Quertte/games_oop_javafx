@@ -93,11 +93,29 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        for (int i = 0; i < table.length; i++) {
+        int countRow = 0;
+        int countCell = 0;
+        for(int row = 0; row < table.length; row ++){
+            for(int cell = 0; cell < table.length; cell++){
+                if(table[row][cell] == 1){
+                    countCell ++;
+                }
+                if(table[cell][row] == 1){
+                    countRow++;
+                }
+            }
+            if(countCell == table.length || countRow == table.length){
+                result = true;
+                break;
+            }
+
+            countCell = 0;
+            countRow = 0;
+        /*for (int i = 0; i < table.length; i++) {
             if (monoHorizontal(table, i) || monoVertical(table, i)) {
                 result = true;
             }
-        }
+        */}
 
 
         return result;
