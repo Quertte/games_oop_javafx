@@ -26,6 +26,7 @@ public class Logic {
         for (Cell c : cells) {
             if (findBy(c) >= 0) {
                 rs = false;
+                break;
             }
         }
         return rs;
@@ -48,6 +49,29 @@ public class Logic {
 
         return rst;
     }
+    /*public boolean move(Cell source, Cell dest) {
+        boolean rst = false;
+        try {
+            int index = this.findBy(source); // определяем есть ли в клетке cell фигура
+            if (index != -1) { // если есть фигура из figures то весь код ниже
+                Cell[] steps = this.figures[index].way(source, dest); // для фигуры на клетке cell . получить массив клеток пути
+                if (steps.length > 0 && steps[steps.length - 1].equals(dest)) { //если массив не пустой и последний элемент равен точке назначения
+                    for (int i = 0; i < steps.length; i++) {
+                        if (this.findBy(steps[i]) != -1) { // если на любой клетке по пути есть фигура
+                            rst = false;
+                            throw new Exception();
+                        }
+                        rst = true;
+                    }
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Ошибка! На пути фигуры есть другая фигура! " + e.toString());
+            return rst;
+        }
+        return rst;
+    }*/
 
     public void clean() {
         for (int position = 0; position != this.figures.length; position++) {
